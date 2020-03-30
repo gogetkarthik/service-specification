@@ -1,0 +1,837 @@
+---
+swagger: "2.0"
+info:
+  description: Super tokens
+  version: 1.0.0
+  title: SuperTokens
+host: localhost:8080
+basePath: /
+tags:
+- name: config
+  description: intracting with config end point
+- name: dev_or_prod_mode
+  description: to set the env mode( dev | prod )
+- name: handshake
+  description: handshake
+- name: hello
+  description: hello
+- name: session
+  description: intracting with session end point
+- name: session_data
+  description: intracting with session data end point
+- name: session_refresh
+  description: intracting with session refresh end point
+- name: session_user
+  description: intracting with session user end point
+- name: session_verify
+  description: intracting with session verify end point
+schemes:
+- https
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /config:
+    get:
+      tags:
+      - config
+      summary: Get config path for currently loaded config
+      description: Get config path for currently loaded config
+      operationId: config
+      parameters:
+      - name: pid
+        in: query
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Config destails
+          schema:
+            $ref: '#/definitions/ConfigOutput'
+        "400":
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/Error'
+        "404":
+          description: The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
+        "405":
+          description: Method not souported
+          schema:
+            $ref: '#/definitions/Error'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/Error'
+  /devproductionmode:
+    get:
+      tags:
+      - dev_or_prod_mode
+      summary: Get Dev production mode currently running process
+      description: Get Dev production mode currently running process
+      operationId: devProductionMode
+      parameters:
+      - name: pid
+        in: query
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Dev or Prod mode destails
+          schema:
+            $ref: '#/definitions/DevProductionModeOutput'
+        "400":
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/Error'
+        "404":
+          description: The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
+        "405":
+          description: Method not souported
+          schema:
+            $ref: '#/definitions/Error'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/Error'
+  /handshake:
+    post:
+      tags:
+      - handshake
+      summary: handshake
+      description: handshake
+      operationId: handshake
+      parameters:
+      - in: body
+        name: device_driver_info_type
+        required: false
+        schema:
+          $ref: '#/definitions/DeviceDriverInfoType'
+      responses:
+        "200":
+          description: Handshake destails
+          schema:
+            $ref: '#/definitions/HandshakeOutput'
+        "400":
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/Error'
+        "404":
+          description: The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
+        "405":
+          description: Method not souported
+          schema:
+            $ref: '#/definitions/Error'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/Error'
+  /hello:
+    get:
+      tags:
+      - hello
+      summary: hello
+      description: hello
+      operationId: helloGet
+      parameters: []
+      responses:
+        "200":
+          description: Hello
+          schema:
+            $ref: '#/definitions/HelloOutput'
+        "400":
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/Error'
+        "404":
+          description: The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
+        "405":
+          description: Method not souported
+          schema:
+            $ref: '#/definitions/Error'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      tags:
+      - hello
+      summary: hello
+      description: hello
+      operationId: helloPost
+      parameters: []
+      responses:
+        "200":
+          description: Hello
+          schema:
+            $ref: '#/definitions/HelloOutput'
+        "400":
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/Error'
+        "404":
+          description: The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
+        "405":
+          description: Method not souported
+          schema:
+            $ref: '#/definitions/Error'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/Error'
+    put:
+      tags:
+      - hello
+      summary: hello
+      description: hello
+      operationId: helloPut
+      parameters: []
+      responses:
+        "200":
+          description: Hello
+          schema:
+            $ref: '#/definitions/HelloOutput'
+        "400":
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/Error'
+        "404":
+          description: The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
+        "405":
+          description: Method not souported
+          schema:
+            $ref: '#/definitions/Error'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/Error'
+    delete:
+      tags:
+      - hello
+      summary: hello
+      description: hello
+      operationId: helloDelete
+      parameters: []
+      responses:
+        "200":
+          description: Hello
+          schema:
+            $ref: '#/definitions/HelloOutput'
+        "400":
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/Error'
+        "404":
+          description: The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
+        "405":
+          description: Method not souported
+          schema:
+            $ref: '#/definitions/Error'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/Error'
+  /session:
+    post:
+      tags:
+      - session
+      summary: Create new session
+      description: Create new session
+      operationId: createSession
+      parameters:
+      - in: body
+        name: session_input
+        required: true
+        schema:
+          $ref: '#/definitions/SessionInput'
+      responses:
+        "200":
+          description: Session details
+          schema:
+            $ref: '#/definitions/SessionOutput'
+        "400":
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/Error'
+        "404":
+          description: The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
+        "405":
+          description: Method not souported
+          schema:
+            $ref: '#/definitions/Error'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/Error'
+    delete:
+      tags:
+      - session
+      summary: 'delete session(s) for user | handles '
+      description: 'delete session(s) for user | handles '
+      operationId: deleteSession
+      parameters:
+      - in: body
+        name: session_delete_input
+        required: false
+        schema:
+          $ref: '#/definitions/SessionDeleteInput'
+      responses:
+        "200":
+          description: Delete session destails
+          schema:
+            $ref: '#/definitions/SessionDeleteOutput'
+        "400":
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/Error'
+        "404":
+          description: The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
+        "405":
+          description: Method not souported
+          schema:
+            $ref: '#/definitions/Error'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/Error'
+  /session/data:
+    get:
+      tags:
+      - session_data
+      summary: Get session data stored in db
+      description: Get session data stored in db
+      operationId: sessionData
+      parameters:
+      - name: session_handle
+        in: query
+        required: true
+        type: string
+      responses:
+        "200":
+          description: The session data in database
+          schema:
+            $ref: '#/definitions/SessionDataOutput'
+        "400":
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/Error'
+        "404":
+          description: The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
+        "405":
+          description: Method not souported
+          schema:
+            $ref: '#/definitions/Error'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/Error'
+    put:
+      tags:
+      - session_data
+      summary: Update session data stored in db
+      description: Update session data stored in db
+      operationId: sessionDataUpdate
+      parameters:
+      - in: body
+        name: session_data_input
+        required: true
+        schema:
+          $ref: '#/definitions/SessionDataInput'
+      responses:
+        "200":
+          description: The session data in database
+          schema:
+            $ref: '#/definitions/SessionDataOutput'
+        "400":
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/Error'
+        "404":
+          description: The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
+        "405":
+          description: Method not souported
+          schema:
+            $ref: '#/definitions/Error'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/Error'
+  /session/refresh:
+    post:
+      tags:
+      - session_refresh
+      summary: Refresh session
+      description: Refresh session
+      operationId: sessionRefresh
+      parameters:
+      - in: body
+        name: refresh_session_input
+        required: true
+        schema:
+          $ref: '#/definitions/RefreshSessionInput'
+      responses:
+        "200":
+          description: Session details
+          schema:
+            $ref: '#/definitions/SessionOutput'
+        "400":
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/Error'
+        "404":
+          description: The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
+        "405":
+          description: Method not souported
+          schema:
+            $ref: '#/definitions/Error'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/Error'
+  /session/user:
+    get:
+      tags:
+      - session_user
+      summary: Get all session handles for user
+      description: Get all session handles for user
+      operationId: sessionUser
+      parameters:
+      - name: session_user
+        in: query
+        required: true
+        type: string
+      responses:
+        "200":
+          description: The session data in database
+          schema:
+            $ref: '#/definitions/SessionUserOutput'
+        "400":
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/Error'
+        "404":
+          description: The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
+        "405":
+          description: Method not souported
+          schema:
+            $ref: '#/definitions/Error'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/Error'
+  /session/verify:
+    post:
+      tags:
+      - session_verify
+      summary: Verify session
+      description: Verify session
+      operationId: sessionVerify
+      parameters:
+      - in: body
+        name: verify_session_input
+        required: true
+        schema:
+          $ref: '#/definitions/VerifySessionInput'
+      responses:
+        "200":
+          description: Session details
+          schema:
+            $ref: '#/definitions/SessionOutput'
+        "400":
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/Error'
+        "404":
+          description: The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
+        "405":
+          description: Method not souported
+          schema:
+            $ref: '#/definitions/Error'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  AccessToken:
+    type: string
+    description: Access token
+  AntiCsrfToken:
+    type: string
+    description: Anti csrf token
+  ConfigOutput:
+    type: object
+    properties:
+      path:
+        type: string
+      status:
+        $ref: '#/definitions/Status'
+    description: Config details
+  DeviceDriverInfoType:
+    type: object
+    properties:
+      driver:
+        $ref: '#/definitions/Driver'
+      frontendSDK:
+        type: array
+        items:
+          $ref: '#/definitions/FrontendSDK'
+  DevProductionModeOutput:
+    type: object
+    properties:
+      mode:
+        type: string
+        enum:
+        - DEV
+        - PRODUCTION
+      status:
+        $ref: '#/definitions/Status'
+    description: Dev production mode details
+  DoAntiCsrfCheck:
+    type: boolean
+    description: Do anti csrf check
+  Driver:
+    type: object
+    properties:
+      name:
+        type: string
+      version:
+        type: string
+    description: Driver details
+  Error:
+    type: string
+    description: Error details
+  ErrorObject:
+    type: object
+    properties:
+      errorMessage:
+        type: string
+    description: Error object
+  FrontendSDK:
+    type: object
+    properties:
+      name:
+        type: string
+      version:
+        type: string
+    description: Frontend SDK details
+  HelloOutput:
+    type: string
+    description: Hello
+  HandshakeOutput:
+    type: object
+    properties:
+      accessTokenBlacklistingEnabled:
+        type: boolean
+      accessTokenPath:
+        type: string
+      cookieDomain:
+        type: string
+      cookieSecure:
+        type: string
+      cookieSameSite:
+        type: string
+      enableAntiCsrf:
+        type: boolean
+      idRefreshTokenPath:
+        type: string
+      jwtSigningPublicKeyExpiryTime:
+        type: integer
+      jwtSigningPublicKey:
+        $ref: '#/definitions/JWTSigningPublicKey'
+      refreshTokenPath:
+        type: string
+      status:
+        $ref: '#/definitions/Status'
+    description: Handshake details
+  JWTSigningPublicKey:
+    type: string
+    description: JWT signing public key
+  JWTSigningPublicKeyExpiryTime:
+    type: string
+    description: JWT signing public key expiry time
+  Message:
+    type: string
+    description: Message
+  RefreshSessionInput:
+    type: object
+    properties:
+      deviceDriverInfo:
+        $ref: '#/definitions/DeviceDriverInfoType'
+      refreshToken:
+        type: string
+    description: Refresg session input
+  Session:
+    type: object
+    properties:
+      handle:
+        type: string
+      userDataInJWT:
+        type: object
+        properties: {}
+      refreshToken:
+        type: string
+    description: Session details
+  SessionDataInput:
+    type: object
+    properties:
+      userDataInDatabase:
+        $ref: '#/definitions/UserDataInDatabase'
+      sessionHandle:
+        type: string
+    description: Session data to update
+  SessionDataOutput:
+    type: object
+    properties:
+      message:
+        $ref: '#/definitions/Message'
+      status:
+        $ref: '#/definitions/Status'
+      userDataInDatabase:
+        $ref: '#/definitions/UserDataInDatabase'
+    description: Session data in database
+  SessionDeleteInput:
+    type: object
+    properties:
+      sessionHandles:
+        type: array
+        items:
+          type: string
+      userID:
+        $ref: '#/definitions/UserID'
+    description: Delete session(s)
+  SessionDeleteOutput:
+    type: object
+    properties:
+      status:
+        $ref: '#/definitions/Status'
+      numberOfSessionsRevoked:
+        type: integer
+    description: Delete session response
+  SessionInput:
+    type: object
+    properties:
+      deviceDriverInfo:
+        $ref: '#/definitions/DeviceDriverInfoType'
+      userDataInDatabase:
+        $ref: '#/definitions/UserDataInDatabase'
+      userDataInJWT:
+        type: object
+        properties: {}
+      userID:
+        title: string
+    description: Parameters for getting a new session
+  SessionOutput:
+    type: object
+    properties:
+      accessToken:
+        $ref: '#/definitions/Token'
+      antiCsrfToken:
+        $ref: '#/definitions/AntiCsrfToken'
+      idRefreshToken:
+        $ref: '#/definitions/Token'
+      jwtSigningPublicKey:
+        $ref: '#/definitions/JWTSigningPublicKey'
+      jwtSigningPublicKeyExpiryTime:
+        $ref: '#/definitions/JWTSigningPublicKeyExpiryTime'
+      message:
+        $ref: '#/definitions/Message'
+      refreshToken:
+        $ref: '#/definitions/Token'
+      session:
+        $ref: '#/definitions/Session'
+      status:
+        $ref: '#/definitions/Status'
+    description: Session details
+  SessionRefreshInput:
+    type: object
+    properties:
+      deviceDriverInfo:
+        $ref: '#/definitions/DeviceDriverInfoType'
+      refreshToken:
+        type: string
+    description: Session refresh input
+  SessionUserOutput:
+    type: object
+    properties:
+      sessionHandles:
+        type: array
+        items:
+          type: string
+      status:
+        $ref: '#/definitions/Status'
+    description: Session user details
+  Status:
+    type: string
+    enum:
+    - OK
+    - NOT_ALLOWED
+    - NOT_SUPPORTED
+    - TOKEN_THEFT_DETECTED
+    - TRY_REFRESH_TOKEN
+    - UNAUTHORISED
+  Token:
+    type: object
+    properties:
+      createdTime:
+        type: integer
+      cookiePath:
+        type: string
+      cookieSecure:
+        type: boolean
+      domain:
+        type: string
+      expiry:
+        type: integer
+      sameSite:
+        type: string
+      token:
+        type: string
+    description: Token details
+  UserDataInDatabase:
+    type: object
+    description: User data in database
+  UserID:
+    type: string
+    description: User ID
+  VerifySessionInput:
+    type: object
+    properties:
+      accessToken:
+        $ref: '#/definitions/AccessToken'
+      antiCsrfToken:
+        $ref: '#/definitions/AntiCsrfToken'
+      doAntiCsrfCheck:
+        $ref: '#/definitions/DoAntiCsrfCheck'
+      deviceDriverInfo:
+        $ref: '#/definitions/DeviceDriverInfoType'
+    description: Input for verify session
+parameters:
+  DEVICE_DRIVER_INFO_TYPE:
+    in: body
+    name: device_driver_info_type
+    required: false
+    schema:
+      $ref: '#/definitions/DeviceDriverInfoType'
+  QUERY_PID:
+    name: pid
+    in: query
+    required: true
+    type: string
+  QUERY_SESSION_HANDLE:
+    name: session_handle
+    in: query
+    required: true
+    type: string
+  QUERY_SESSION_USER:
+    name: session_user
+    in: query
+    required: true
+    type: string
+  REFRESH_SESSION_INPUT:
+    in: body
+    name: refresh_session_input
+    required: true
+    schema:
+      $ref: '#/definitions/RefreshSessionInput'
+  SESSION_DATA_INPUT:
+    in: body
+    name: session_data_input
+    required: true
+    schema:
+      $ref: '#/definitions/SessionDataInput'
+  SESSION_DELETE_INPUT:
+    in: body
+    name: session_delete_input
+    required: false
+    schema:
+      $ref: '#/definitions/SessionDeleteInput'
+  SESSION_INPUT:
+    in: body
+    name: session_input
+    required: true
+    schema:
+      $ref: '#/definitions/SessionInput'
+  VERIFY_SESSION_INPUT:
+    in: body
+    name: verify_session_input
+    required: true
+    schema:
+      $ref: '#/definitions/VerifySessionInput'
+responses:
+  ConfigOutput:
+    description: Config destails
+    schema:
+      $ref: '#/definitions/ConfigOutput'
+  SessionDeleteOutput:
+    description: Delete session destails
+    schema:
+      $ref: '#/definitions/SessionDeleteOutput'
+  DevProductionModeOutput:
+    description: Dev or Prod mode destails
+    schema:
+      $ref: '#/definitions/DevProductionModeOutput'
+  HandshakeOutput:
+    description: Handshake destails
+    schema:
+      $ref: '#/definitions/HandshakeOutput'
+  HelloOutput:
+    description: Hello
+    schema:
+      $ref: '#/definitions/HelloOutput'
+  InvalidInput:
+    description: Invalid input
+    schema:
+      $ref: '#/definitions/Error'
+  InternalServerError:
+    description: Internal server error
+    schema:
+      $ref: '#/definitions/Error'
+  MethodNotSouported:
+    description: Method not souported
+    schema:
+      $ref: '#/definitions/Error'
+  NotFound:
+    description: The specified resource was not found
+    schema:
+      $ref: '#/definitions/Error'
+  SessionDataOutput:
+    description: The session data in database
+    schema:
+      $ref: '#/definitions/SessionDataOutput'
+  SessionOutput:
+    description: Session details
+    schema:
+      $ref: '#/definitions/SessionOutput'
+  SessionUserOutput:
+    description: The session data in database
+    schema:
+      $ref: '#/definitions/SessionUserOutput'
