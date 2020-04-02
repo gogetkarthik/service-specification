@@ -10,15 +10,15 @@ import (
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/service-specification/client/config"
-	"github.com/service-specification/client/dev_or_prod_mode"
-	"github.com/service-specification/client/handshake"
-	"github.com/service-specification/client/hello"
-	"github.com/service-specification/client/session"
-	"github.com/service-specification/client/session_data"
-	"github.com/service-specification/client/session_refresh"
-	"github.com/service-specification/client/session_user"
-	"github.com/service-specification/client/session_verify"
+	"github.com/gogetkarthik/service-specification/supertokens/client/config"
+	"github.com/gogetkarthik/service-specification/supertokens/client/dev_or_prod_mode"
+	"github.com/gogetkarthik/service-specification/supertokens/client/handshake"
+	"github.com/gogetkarthik/service-specification/supertokens/client/hello"
+	"github.com/gogetkarthik/service-specification/supertokens/client/session"
+	"github.com/gogetkarthik/service-specification/supertokens/client/session_data"
+	"github.com/gogetkarthik/service-specification/supertokens/client/session_refresh"
+	"github.com/gogetkarthik/service-specification/supertokens/client/session_user"
+	"github.com/gogetkarthik/service-specification/supertokens/client/session_verify"
 )
 
 // Default super tokens HTTP client.
@@ -27,7 +27,7 @@ var Default = NewHTTPClient(nil)
 const (
 	// DefaultHost is the default Host
 	// found in Meta (info) section of spec file
-	DefaultHost string = "localhost:8080"
+	DefaultHost string = "localhost:3567"
 	// DefaultBasePath is the default BasePath
 	// found in Meta (info) section of spec file
 	DefaultBasePath string = "/"

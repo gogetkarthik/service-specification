@@ -4,7 +4,7 @@ info:
   description: Super tokens
   version: 1.0.0
   title: SuperTokens
-host: localhost:8080
+host: localhost:3567
 basePath: /
 tags:
 - name: config

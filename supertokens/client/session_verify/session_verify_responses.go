@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/service-specification/models"
+	"github.com/gogetkarthik/service-specification/supertokens/models"
 )
 
 // SessionVerifyReader is a Reader for the SessionVerify structure.

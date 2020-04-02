@@ -15,7 +15,7 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/service-specification/models"
+	"github.com/gogetkarthik/service-specification/supertokens/models"
 )
 
 // NewDeleteSessionParams creates a new DeleteSessionParams object
