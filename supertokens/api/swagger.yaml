@@ -556,7 +556,7 @@ definitions:
       cookieDomain:
         type: string
       cookieSecure:
-        type: string
+        type: boolean
       cookieSameSite:
         type: string
       enableAntiCsrf:

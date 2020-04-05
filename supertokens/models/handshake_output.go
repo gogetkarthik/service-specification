@@ -29,7 +29,7 @@ type HandshakeOutput struct {
 	CookieSameSite string `json:"cookieSameSite,omitempty"`
 
 	// cookie secure
-	CookieSecure string `json:"cookieSecure,omitempty"`
+	CookieSecure bool `json:"cookieSecure,omitempty"`
 
 	// enable anti csrf
 	EnableAntiCsrf bool `json:"enableAntiCsrf,omitempty"`
